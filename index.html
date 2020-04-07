@@ -24,7 +24,7 @@
             height: 7em;
         }
         #kittel {
-            height: 7em;
+            height: 9em;
         }
         #mask {
             height: 7em;
@@ -80,11 +80,11 @@
 </head>
 <body>
     
-    <h1>Mängu pealkiri</h1>
+    <h1>Mängu pealkiri - Isikukaitsevahendite kasutamine</h1>
     <div class="container">
         
         <div  id="game-background" class="overlay">
-            
+            <!-- uued tausta failid proovimiseks on m@ngu kaustas, kaustas nimega "taustad" -->
             <img id="bg" src="https://i.ibb.co/h1MFsNB/mangutaust-V2.jpg" alt="mangutaust-V2" border="0">
             <img id="deso" class="hide" src="https://i.ibb.co/VBFrZpb/deso.png" alt="deso" border="0">
             <img id="kittel" class="hide" src="https://i.ibb.co/Yf67yvc/kaitsekittel.png" alt="kaitsekittel" border="0">
@@ -133,11 +133,16 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="crossorigin="anonymous"></script>
     <script>
+        // esemed on nimekirjas 6iges j@rjekorras
+        vahendid = ['#deso', '#kittel', '#mask', '#myts', '#prillid', '#kindad'];
+        // tingimuslause, mis kontrollib, kas parasjagu liigutatav ese on 6ige
+        // kontroll käib läbi array loopiga.
+        // vahendid[vastav index viitab array esemele], kui == siis on valitud 6ige ese
+        // kui on valitud ese on 6ige siis ilmub valitud kohta tekst lisaselgitusega vahendi kasutamisest ja saab m@nguga j@tkata valimist
+        // kui ese on vale, siis ilmub tekst, et ese on vale, proovi uuesti
+        // m@ngija on m@ngu l@binud ainult siis kui esemed on 6igesti reas. Aga m@ngu l6pus ilmub tekst, et "Harjuta veelkord" ja m@ngu esileht laetakse uuesti
+
         $(document).ready(function() {
-            
-        // $("#prillid").click(function(){
-        //     drag(this);
-        // }); 
  
         // Mängu alustamisel eemaldame tumeda tausta ja toome esemed ja naise nähtavale
 
@@ -168,13 +173,6 @@
     });
         
         
-    //     function drag(element) {
-    //     $(element).draggable({
-    //     containment: "document",
-    //     cursor: "grabbing",
-    //     opacity: 0.7
-    //     });
-    // }
 });
     </script>
 </body>
