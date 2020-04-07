@@ -8,12 +8,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <style>
-        html {
-            margin: 0 !important;
-            padding: 0 !important;
+        
+        :root {
+            --main-color: #E60012;
+            --sec-color: #CA000F;
         }
         #naine {
             height: 27em;
+            margin-top: 7em;
         }
         #deso {
             height: 7em;
@@ -30,47 +32,75 @@
         #prillid {
             height: 7em;
         }
+        /* Peidame taustal ära esemed ja naise enne mängu algust*/
+        
+        .hide {
+            display: none;
+        }
+
         #bg {
             width: 60em;
             position: absolute;
             z-index: -10;
             border: 3px solid #333;
             border-radius: 10px;
-            margin-top: 2em;
             
         }
+
         h1 {
             text-align: center;
+            margin-bottom: 1em;
+            margin-top: 1em;
+            color: var(--main-color);
         }
 
-         #dialog {
-             position: relative;
+        .button-red {
+            background-color: var(--main-color) !important;
+            color: white;
         }
-        
-        #begin {
-        
+        .button-red:hover {
+            color: white;
+            background-color: var(--sec-color) !important;
         }
+
+        .overlay {
+            background: rgba(0,0,0,0.8);
+            width: 960px;
+            height: 610px;
+            position: relative;
+            border-radius: 10px;
+        }
+        #game-background {
+            margin: 0 auto;
+        }
+
+        
+
     </style>
 </head>
 <body>
     
     <h1>Mängu pealkiri</h1>
     <div class="container">
-        <div id="game-background">
+        
+        <div  id="game-background" class="overlay">
+            
             <img id="bg" src="https://i.ibb.co/h1MFsNB/mangutaust-V2.jpg" alt="mangutaust-V2" border="0">
-            <img id="deso" src="https://i.ibb.co/VBFrZpb/deso.png" alt="deso" border="0">
-            <img id="kittel" src="https://i.ibb.co/Yf67yvc/kaitsekittel.png" alt="kaitsekittel" border="0">
-            <img id="kindad" src="https://i.ibb.co/kQLRz5s/kindad.png" alt="kindad" border="0">
-            <img id="mask" src="https://i.ibb.co/BtYrQKw/mask-mangule.png" alt="mask-mangule" border="0">
-            <img id="naine" src="https://i.ibb.co/LCsJPRt/naine.png" alt="naine" border="0">
-            <img id="prillid" src="https://i.ibb.co/ngLGG7R/prillid.png" alt="prillid" border="0">
-            <button type="button" class="btn btn-primary text-center" data-toggle="modal" data-target="#staticBackdrop">
+            <img id="deso" class="hide" src="https://i.ibb.co/VBFrZpb/deso.png" alt="deso" border="0">
+            <img id="kittel" class="hide" src="https://i.ibb.co/Yf67yvc/kaitsekittel.png" alt="kaitsekittel" border="0">
+            <img id="kindad"  class="hide" src="https://i.ibb.co/kQLRz5s/kindad.png" alt="kindad" border="0">
+            <img id="mask"  class="hide" src="https://i.ibb.co/BtYrQKw/mask-mangule.png" alt="mask-mangule" border="0">
+            <img id="naine"  class="hide" src="https://i.ibb.co/LCsJPRt/naine.png" alt="naine" border="0">
+            <img id="prillid" class="hide" src="https://i.ibb.co/ngLGG7R/prillid.png" alt="prillid" border="0">
+
+            <!-- Modal button -->
+            <button id="start" type="button" class="btn button-red col text-center" data-toggle="modal" data-target="#staticBackdrop">
                 Mine mängima
               </button>
               
               <!-- Modal -->
               <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="staticBackdropLabel">Juhised</h5>
@@ -83,7 +113,7 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Sule</button>
-                      <button type="button" class="btn btn-primary">Alusta</button>
+                      <button type="button" class="btn button-red" id="begin">Alusta</button>
                     </div>
                   </div>
                 </div>
@@ -93,12 +123,7 @@
         
         
         
-        <!-- <div id="dialog" title="Juhised">
-            <p>Siia tulevad juhised.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </p>
-            <button id="begin" type="button" class="btn btn-primary">Alusta</button>
-        </div> -->
+        
     </div>
     
     
@@ -113,18 +138,26 @@
         // $("#prillid").click(function(){
         //     drag(this);
         // }); 
-        $( function() {
-            $( "#dialog" ).dialog();
-        } );
+ 
+        // Mängu alustamisel eemaldame tumeda tausta ja toome esemed ja naise nähtavale
 
-       $('#myModal').on('shown.bs.modal', function () {
-            $('#myInput').trigger('focus')
+        $("#begin").click(function(){
+            $('#game-background').removeClass('overlay');
+            $("#staticBackdrop").modal('hide');
+            $('#deso, #kittel,#kindad,#mask,#naine,#prillid').removeClass('hide');
+            $("#start").addClass('hide');
+            return false;
+            
         })
 
 
 
         $("#mask").draggable();
         $("#prillid").draggable();
+        $("#kindad").draggable();
+        $("#kittel").draggable();
+        $("#deso").draggable();
+
 
         $("#naine").droppable({
       drop: function( event, ui ) {
