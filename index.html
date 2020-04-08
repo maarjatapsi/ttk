@@ -16,25 +16,38 @@
         #naine {
             height: 27em;
             margin-top: 7em;
+            margin-left: 3em;
+            
         }
         #deso {
             height: 7em;
+            margin-top: 5.6em;
         }
         #kindad {
             height: 7em;
+            margin-top: 5.6em;
+            
         }
         #kittel {
             height: 9em;
+            margin-top: 12em;
         }
         #mask {
-            height: 7em;
+            height: 6em;
+            margin-top: 6em;
         }
         #prillid {
-            height: 7em;
+            height: 6em;
+            margin-top: 6em;
+            margin-left: 3em;
+        }
+        .items:hover {
+            transform: scale(1.1);
         }
 
         #muts {
-            height: 4em;
+            height: 3em;
+            margin-top: 7em;
         }
 
 
@@ -71,34 +84,34 @@
 
         .overlay {
             background: rgba(0,0,0,0.8);
-            width: 960px;
+            width: 60em;
             height: 610px;
             position: relative;
             border-radius: 10px;
         }
         #game-background {
             margin: 0 auto;
+            width: 60em;
         }
 
-        
 
     </style>
 </head>
 <body>
     
-    <h1>Mängu pealkiri - Isikukaitsevahendite kasutamine</h1>
+    <h1>Isikukaitsevahendite kasutamine</h1>
     <div class="container">
         
         <div  id="game-background" class="overlay">
             <!-- uued tausta failid proovimiseks on m@ngu kaustas, kaustas nimega "taustad" -->
-            <img id="bg" src="https://i.ibb.co/kSHfqVY/mangutaust-V2-2.png" alt="mangutaust-V2" border="0">
-            <img id="deso" class="hide" src="https://i.ibb.co/VBFrZpb/deso.png" alt="deso" border="0">
-            <img id="kittel" class="hide" src="https://i.ibb.co/Yf67yvc/kaitsekittel.png" alt="kaitsekittel" border="0">
-            <img id="kindad"  class="hide" src="https://i.ibb.co/kQLRz5s/kindad.png" alt="kindad" border="0">
-            <img id="mask"  class="hide" src="https://i.ibb.co/BtYrQKw/mask-mangule.png" alt="mask-mangule" border="0">
-            <img id="naine"  class="hide" src="https://i.ibb.co/LCsJPRt/naine.png" alt="naine" border="0">
-            <img id="prillid" class="hide" src="https://i.ibb.co/ngLGG7R/prillid.png" alt="prillid" border="0">
-            <img id="muts" class ="hide" src="https://i.ibb.co/N6twk0g/muts.png" alt="muts" border="0">
+            <img id="bg" src="https://i.ibb.co/kSHfqVY/mangutaust-V2-2.png" alt="mangutaust-V2" border="0" class="img-fluid">
+            <img id="deso" class="hide img-fluid items" src="https://i.ibb.co/VBFrZpb/deso.png" alt="deso" border="0">
+            <img id="kindad"  class="hide img-fluid items" src="https://i.ibb.co/kQLRz5s/kindad.png" alt="kindad" border="0">
+            <img id="mask"  class="hide img-fluid items" src="https://i.ibb.co/BtYrQKw/mask-mangule.png" alt="mask-mangule" border="0">
+            <img id="naine"  class="hide img-fluid" src="https://i.ibb.co/LCsJPRt/naine.png" alt="naine" border="0">
+            <img id="prillid" class="hide img-fluid items" src="https://i.ibb.co/ngLGG7R/prillid.png" alt="prillid" border="0">
+            <img id="muts" class ="hide img-fluid items" src="https://i.ibb.co/N6twk0g/muts.png" alt="muts" border="0">
+            <img id="kittel" class="hide img-fluid items" src="https://i.ibb.co/Yf67yvc/kaitsekittel.png" alt="kaitsekittel" border="0">
 
             <!-- Modal button -->
             <button id="start" type="button" class="btn button-red col text-center" data-toggle="modal" data-target="#staticBackdrop">
@@ -116,7 +129,7 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      Siia tulevad juhised
+                      Kasuta kaitsevahendeid õiges järjekorras.
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Sule</button>
