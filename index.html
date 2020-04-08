@@ -140,14 +140,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="crossorigin="anonymous"></script>
     <script>
-        // esemed on nimekirjas 6iges j@rjekorras
-        vahendid = ['#deso', '#kittel', '#mask', '#muts', '#prillid', '#kindad'];
-        // tingimuslause, mis kontrollib, kas parasjagu liigutatav ese on 6ige
-        // kontroll käib läbi array loopiga.
-        // vahendid[vastav index viitab array esemele], kui == siis on valitud 6ige ese
-        // kui on valitud ese on 6ige siis ilmub valitud kohta tekst lisaselgitusega vahendi kasutamisest ja saab m@nguga j@tkata valimist
-        // kui ese on vale, siis ilmub tekst, et ese on vale, proovi uuesti
-        // m@ngija on m@ngu l@binud ainult siis kui esemed on 6igesti reas. Aga m@ngu l6pus ilmub tekst, et "Harjuta veelkord" ja m@ngu esileht laetakse uuesti
 
         $(document).ready(function() {
  
@@ -156,13 +148,11 @@
         $("#begin").click(function(){
             $('#game-background').removeClass('overlay');
             $("#staticBackdrop").modal('hide');
-            $('#deso, #kittel,#kindad,#mask,#naine,#prillid, #muts').removeClass('hide');
+            $('#deso, #kittel,#kindad,#mask,#naine, #prillid, #muts').removeClass('hide');
             $("#start").addClass('hide');
             return false;
             
-        })
-
-
+        });
 
         $("#mask").draggable();
         $("#prillid").draggable();
@@ -172,16 +162,43 @@
         $("#deso").draggable();
         $("#muts").draggable();
 
-        $("#naine").droppable({
-      drop: function( event, ui ) {
-        $( this )
-          .find( "p" ) //leiaks koha kuhu lisainfot panna
-            .html( "mingi tekst" ); //lisainfo mida lisada liigutatud asja kohta
-      }
-    });
-        
-        
+    //     $("#naine").droppable({
+    //   drop: function( event, ui ) {
+    //     $( this )
+    //       .find( "p" ) //leiaks koha kuhu lisainfot panna
+    //         .html( "mingi tekst" ); //lisainfo mida lisada liigutatud asja kohta
+    //   }
+    // });
+
+    
+
+    // kontroll käib läbi array loopiga.
+    // vahendid[vastav index viitab array esemele], kui == siis on valitud 6ige ese
+    // kui on valitud ese on 6ige siis ilmub valitud kohta tekst lisaselgitusega vahendi kasutamisest ja saab m@nguga j@tkata valimist
+    // kui ese on vale, siis ilmub tekst, et ese on vale, proovi uuesti
+    // m@ngija on m@ngu l@binud ainult siis kui esemed on 6igesti reas. et teada saada kas mäng läbi on 6 eset õiges reas (uus array)
+    // m@ngu l6pus ilmub tekst, et "Harjuta veelkord" ja m@ngu esileht laetakse uuesti
+
+    // esemed on nimekirjas vahendid, 6iges j@rjekorras
+    var vahendid = ['#deso', '#kittel', '#mask', '#muts', '#prillid', '#kindad'];
+    //tyhi nimekiri kuhu kogutakse valikud
+    var valik = [];
+
+    $(function() {
+         $("#naine").droppable({
+             drop: function(evt){
+                //loop mis käib läbi kaitsevahendid ja ytleb kas valitud ese mida droppitakse == vastava indeksiga ese nimekirjas vahendid
+                 for (var i = 0; i < vahendid.length; i++) {
+                //tingimuslause, mis kontrollib, kas parasjagu liigutatav ese on 6ige
+                if (vahendid[i] == //see ese mis parasjagu droppitakse) {
+                //siin peaks parasjagu drop-itav element lisatama array-sse "valik" viimaseks elemendiks push() + ese peidetakse
+                $(evt.toElement).valik.push(evt.toElement).addClass("hide");
+            // }
+                 }
+            }
+                        });        
+                            });
 });
-    </script>
+</script>
 </body>
 </html>
