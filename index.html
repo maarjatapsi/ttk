@@ -32,6 +32,12 @@
         #prillid {
             height: 7em;
         }
+
+        #muts {
+            height: 4em;
+        }
+
+
         /* Peidame taustal ära esemed ja naise enne mängu algust*/
         
         .hide {
@@ -85,13 +91,14 @@
         
         <div  id="game-background" class="overlay">
             <!-- uued tausta failid proovimiseks on m@ngu kaustas, kaustas nimega "taustad" -->
-            <img id="bg" src="https://i.ibb.co/h1MFsNB/mangutaust-V2.jpg" alt="mangutaust-V2" border="0">
+            <img id="bg" src="https://i.ibb.co/kSHfqVY/mangutaust-V2-2.png" alt="mangutaust-V2" border="0">
             <img id="deso" class="hide" src="https://i.ibb.co/VBFrZpb/deso.png" alt="deso" border="0">
             <img id="kittel" class="hide" src="https://i.ibb.co/Yf67yvc/kaitsekittel.png" alt="kaitsekittel" border="0">
             <img id="kindad"  class="hide" src="https://i.ibb.co/kQLRz5s/kindad.png" alt="kindad" border="0">
             <img id="mask"  class="hide" src="https://i.ibb.co/BtYrQKw/mask-mangule.png" alt="mask-mangule" border="0">
             <img id="naine"  class="hide" src="https://i.ibb.co/LCsJPRt/naine.png" alt="naine" border="0">
             <img id="prillid" class="hide" src="https://i.ibb.co/ngLGG7R/prillid.png" alt="prillid" border="0">
+            <img id="muts" class ="hide" src="https://i.ibb.co/N6twk0g/muts.png" alt="muts" border="0">
 
             <!-- Modal button -->
             <button id="start" type="button" class="btn button-red col text-center" data-toggle="modal" data-target="#staticBackdrop">
@@ -134,7 +141,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="crossorigin="anonymous"></script>
     <script>
         // esemed on nimekirjas 6iges j@rjekorras
-        vahendid = ['#deso', '#kittel', '#mask', '#myts', '#prillid', '#kindad'];
+        vahendid = ['#deso', '#kittel', '#mask', '#muts', '#prillid', '#kindad'];
         // tingimuslause, mis kontrollib, kas parasjagu liigutatav ese on 6ige
         // kontroll käib läbi array loopiga.
         // vahendid[vastav index viitab array esemele], kui == siis on valitud 6ige ese
@@ -149,7 +156,7 @@
         $("#begin").click(function(){
             $('#game-background').removeClass('overlay');
             $("#staticBackdrop").modal('hide');
-            $('#deso, #kittel,#kindad,#mask,#naine,#prillid').removeClass('hide');
+            $('#deso, #kittel,#kindad,#mask,#naine,#prillid, #muts').removeClass('hide');
             $("#start").addClass('hide');
             return false;
             
@@ -162,7 +169,8 @@
         $("#kindad").draggable();
         $("#kittel").draggable();
         $("#deso").draggable();
-
+        $("#deso").draggable();
+        $("#muts").draggable();
 
         $("#naine").droppable({
       drop: function( event, ui ) {
